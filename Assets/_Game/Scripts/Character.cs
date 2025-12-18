@@ -7,20 +7,27 @@ namespace _Game.Scripts
     {
         private IMover _mover;
         private Vector3 _position;
+        
+        private bool _isChangePosition = false;
 
         private void Awake()
         {
             _mover = new AgentMover(GetComponent<NavMeshAgent>());
         }
-
+        
         public void SetPositionToMove(Vector3 position)
         {
             _position = position;
+            _isChangePosition = true;
         }
         
         private void Update()
         {
-            _mover.Move(_position);
+            if (_isChangePosition)
+            {
+                _isChangePosition = false;
+                _mover.Move(_position);
+            }
         }
     }
 }

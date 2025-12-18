@@ -6,10 +6,11 @@ namespace _Game.Scripts
     {
         [SerializeField] private Caster _caster;
         [SerializeField] private Character _character;
+        [SerializeField] private Transform _flagTransform;
 
         private void Awake()
         {
-            _caster.Initialize(new Input(), _character);
+            _caster.Initialize(new Input(), _character, _flagTransform);
         }
     }
 }

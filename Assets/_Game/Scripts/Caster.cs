@@ -6,10 +6,13 @@ namespace _Game.Scripts
     {
         private Input _input;
         private Character _character;
-        public void Initialize(Input input, Character character)
+        private Transform _flagTransform;
+        
+        public void Initialize(Input input, Character character, Transform flagTransform)
         {
             _input = input;
             _character = character;
+            _flagTransform = flagTransform;
         }
         
         private Camera Camera => Camera.main;
@@ -28,8 +31,8 @@ namespace _Game.Scripts
             {
                 if (hit.collider != null)
                 {
-                    Debug.Log(hit.point);
                     _character.SetPositionToMove(hit.point);
+                    _flagTransform.position = hit.point;
                 }
             }
         }
