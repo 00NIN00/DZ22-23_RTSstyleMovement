@@ -6,7 +6,7 @@ namespace _Game.Scripts
     public class Character : MonoBehaviour
     {
         private IMover _mover;
-        [SerializeField] private Vector3 _position;
+        private Vector3 _position;
 
         private void Awake()
         {
