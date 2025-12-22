@@ -3,7 +3,7 @@ using UnityEngine.AI;
 
 namespace _Game.Scripts
 {
-    public class Character : MonoBehaviour
+    public class Character : MonoBehaviour, IMineTriggerable
     {
         private IMover _mover;
         private Vector3 _position;
