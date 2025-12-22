@@ -10,6 +10,9 @@ namespace _Game.Scripts
         
         private bool _isChangePosition = false;
 
+        public Vector3 Position => _position;
+        public bool IsFinishing => _mover.IsFinishing;
+
         private void Awake()
         {
             _mover = new AgentMover(GetComponent<NavMeshAgent>());

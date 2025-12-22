@@ -32,7 +32,6 @@ namespace _Game.Scripts
                 if (hit.collider != null)
                 {
                     _character.SetPositionToMove(hit.point);
-                    _flagTransform.position = hit.point;
                 }
             }
         }
