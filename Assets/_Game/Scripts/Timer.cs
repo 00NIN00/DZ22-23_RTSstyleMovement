@@ -6,28 +6,28 @@ namespace _Game.Scripts
     {
         private float _timer;
         
-        private bool _isProcess;
         private bool _isOver;
+        public bool IsProcess { get; private set; }
         
         public bool TryStart(float timer)
         {
-            if (_isProcess)
+            if (IsProcess)
                 return false;
             
             _timer = timer;
-            _isProcess = true;
+            IsProcess = true;
             
             return true;
         }
 
         public void Update()
         {
-            if (_isProcess && _timer > 0)
+            if (IsProcess && _timer > 0)
                 _timer -= Time.deltaTime;
 
-            if (_timer <= 0 && _isProcess)
+            if (_timer <= 0 && IsProcess)
             {
-                _isProcess = false;
+                IsProcess = false;
                 _isOver = true;;
             }
         }
@@ -45,7 +45,7 @@ namespace _Game.Scripts
 
         private void Reset()
         {
-            _isProcess = false;
+            IsProcess = false;
             _isOver = false;
         }
     }

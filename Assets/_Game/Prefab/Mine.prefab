@@ -51,6 +51,8 @@ MonoBehaviour:
   _damage: 1
   _time: 2
   _boomParticleSystem: {fileID: 5946642648705916131}
+  speed: 2
+  amplitude: 2
 --- !u!135 &8266374638118797402
 SphereCollider:
   m_ObjectHideFlags: 0

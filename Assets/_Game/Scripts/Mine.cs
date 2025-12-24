@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace _Game.Scripts
@@ -11,12 +12,17 @@ namespace _Game.Scripts
         [SerializeField] private ParticleSystem _boomParticleSystem;
         private bool _isExplored;
         private Timer _timer;
+        
+        public float speed = 2f;      // Скорость пульсации (Гц)
+        public float amplitude = 0.2f; // Амплитуда (0.2 = ±20% от базового)
+    
+        private Vector3 baseScale;
 
         private void Awake()
         {
             _timer = new Timer();
             GetComponent<SphereCollider>().radius = _radius;
-            
+            baseScale = transform.localScale;
         }
 
         private void Update()
@@ -28,6 +34,15 @@ namespace _Game.Scripts
             else
             {
                 _timer.Update();
+            }
+
+            if (_timer.IsProcess)
+            {
+                float scaleFactor = 1f + Mathf.Sin(Time.time * speed) * amplitude;
+                transform.localScale = new Vector3(
+                    baseScale.x * scaleFactor,
+                    baseScale.y * scaleFactor,
+                    baseScale.z * scaleFactor);
             }
             
             if (!_boomParticleSystem.isPlaying && _isExplored)
