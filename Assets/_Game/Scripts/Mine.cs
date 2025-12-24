@@ -45,8 +45,6 @@ namespace _Game.Scripts
                     health.TakeDamage(_damage);
                 }
             }
-
-            
             _isExplored =  true;
             
             _boomParticleSystem.Play();

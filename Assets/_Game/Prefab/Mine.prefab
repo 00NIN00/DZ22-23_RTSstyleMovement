@@ -49,8 +49,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _radius: 3
   _damage: 1
-  _time: 3
-  _particleSystem: {fileID: 5946642648705916131}
+  _time: 2
+  _boomParticleSystem: {fileID: 5946642648705916131}
 --- !u!135 &8266374638118797402
 SphereCollider:
   m_ObjectHideFlags: 0
