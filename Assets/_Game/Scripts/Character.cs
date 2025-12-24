@@ -1,5 +1,5 @@
-using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine;
 
 namespace _Game.Scripts
 {
@@ -12,10 +12,13 @@ namespace _Game.Scripts
 
         public Vector3 Position => _position;
         public bool IsFinishing => _mover.IsFinishing;
+        
+        public IAnimatorMove AnimatorMove {get ; private set;}
 
-        private void Awake()
+        public void Initialize(IMover mover, IAnimatorMove animatorMove)
         {
-            _mover = new AgentMover(GetComponent<NavMeshAgent>());
+            _mover = mover;
+            AnimatorMove = animatorMove;
         }
         
         public void SetPositionToMove(Vector3 position)

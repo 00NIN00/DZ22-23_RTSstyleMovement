@@ -3,15 +3,17 @@ using UnityEngine;
 
 namespace _Game.Scripts
 {
-    public class HealthSystem : MonoBehaviour
+    public class HealthSystem : MonoBehaviour, IAnimatorHealth
     {
-        private float _health;
         [SerializeField] private float _maxHealth;
+        private float _health;
+        
+        private bool _isTakeDamage;
         
         public float Health => _health;
         public float MaxHealth => _maxHealth;
         public bool IsAlive => _health > 0;
-
+        
         private void Awake()
         {
             _health = _maxHealth;
@@ -31,10 +33,11 @@ namespace _Game.Scripts
 
         public void TakeDamage(float damage)
         {
-            if(damage <= 0) 
+            if(damage <= 0)
                 return;
             
             _health -= damage;
+            _isTakeDamage = true;
 
             if (_health <= 0)
                 _health = 0;
@@ -50,5 +53,21 @@ namespace _Game.Scripts
             if (_health >= 0)
                 _health = _maxHealth;
         }
+
+        public bool TakeDamageTrigger()
+        {
+            if (_isTakeDamage)
+            {
+                _isTakeDamage = false;
+                return true;
+            }
+            
+            return false;
+        }
+    }
+
+    public interface IAnimatorHealth
+    {
+        bool TakeDamageTrigger();
     }
 }
