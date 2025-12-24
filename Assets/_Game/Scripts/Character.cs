@@ -29,6 +29,12 @@ namespace _Game.Scripts
         
         private void Update()
         {
+            if (_healthSystem.IsAlive == false)
+            {
+                _mover.StopMoving();
+                return;
+            }
+            
             if (_isChangePosition)
             {
                 _isChangePosition = false;

@@ -17,5 +17,10 @@ namespace _Game.Scripts
         {
             _agent.SetDestination(position);
         }
+
+        public void StopMoving()
+        {
+            _agent.isStopped = true;
+        }
     }
 }

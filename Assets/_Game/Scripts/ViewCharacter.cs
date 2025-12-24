@@ -7,6 +7,7 @@ namespace _Game.Scripts
     {
         private static readonly int Speed = Animator.StringToHash("Speed");
         private static readonly int TakeDamage = Animator.StringToHash("TakeDamage");
+        private static readonly int IsDeath = Animator.StringToHash("IsDeath");
 
         [SerializeField] private Animator _animator;
         
@@ -18,16 +19,21 @@ namespace _Game.Scripts
         {
             _animatorMove = animatorMove;
             _animatorHealth = animatorHealth;
-
-            Debug.Log(_animatorMove);
         }
 
         private void Update()
         {
+            if (_animatorHealth.IsAlive == false)
+            {
+                _animator.SetBool(IsDeath, true);
+                
+                return;
+            }
+            
             if (_animatorHealth.TakeDamageTrigger())
                 _animator.SetTrigger(TakeDamage);
-
-
+            
+            
             _animator.SetFloat(Speed, _animatorMove.Speed);
         }
     }

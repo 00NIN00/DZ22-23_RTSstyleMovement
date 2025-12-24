@@ -7,5 +7,7 @@ namespace _Game.Scripts
         bool IsFinishing { get; }
 
         void Move(Vector3 position);
+        
+        void StopMoving();
     }
 }

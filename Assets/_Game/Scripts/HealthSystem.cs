@@ -63,6 +63,7 @@ namespace _Game.Scripts
 
     public interface IAnimatorHealth
     {
+        bool IsAlive { get; }
         bool TakeDamageTrigger();
     }
 }
