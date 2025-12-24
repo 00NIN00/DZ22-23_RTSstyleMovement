@@ -8,10 +8,10 @@ namespace _Game.Scripts
         [SerializeField] private float _radius;
         [SerializeField] private float _damage;
         [SerializeField] private float _time;
-        
+
         private Timer _timer;
         private HealthSystem _health;
-        
+
         private void Awake()
         {
             _timer = new Timer();
@@ -39,9 +39,10 @@ namespace _Game.Scripts
                 if (collider.TryGetComponent(out HealthSystem health))
                 {
                     health.TakeDamage(_damage);
-                    gameObject.SetActive(false);
                 }
             }
+
+            gameObject.SetActive(false);
         }
 
         private void OnTriggerEnter(Collider other)
@@ -51,11 +52,11 @@ namespace _Game.Scripts
                 _timer.TryStart(_time);
             }
         }
-        
+
         public void OnDrawGizmos()
         {
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(transform.position, _radius);
-        }        
+        }
     }
 }

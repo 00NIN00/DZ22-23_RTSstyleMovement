@@ -13,11 +13,6 @@ namespace _Game.Scripts
         public float Health => _health;
         public float MaxHealth => _maxHealth;
         public bool IsAlive => _health > 0;
-        
-        private void Awake()
-        {
-            _health = _maxHealth;
-        }
 
         public void Initialize(float maxHealth)
         {

@@ -10,15 +10,17 @@ namespace _Game.Scripts
         [SerializeField] private Transform _flagTransform;
         [SerializeField] private ViewCharacter _viewCharacter;
         [SerializeField] private HealthSystem _healthSystem;
-        
         [SerializeField] private NavMeshAgent _navMeshAgent;
+        
+        [SerializeField] private float _maxHealth;
 
         private void Awake()
         {
             _caster.Initialize(new Input(), _character, _flagTransform);
+            _healthSystem.Initialize(_maxHealth);
             
             var agentMover = new AgentMover(_navMeshAgent);
-            _character.Initialize(agentMover, agentMover);
+            _character.Initialize(agentMover, agentMover, _healthSystem);
             
             _viewCharacter.Initialize(_character.AnimatorMove, _healthSystem);
         }

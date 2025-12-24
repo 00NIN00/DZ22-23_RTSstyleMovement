@@ -1,4 +1,3 @@
-using UnityEngine.AI;
 using UnityEngine;
 
 namespace _Game.Scripts
@@ -6,24 +5,25 @@ namespace _Game.Scripts
     public class Character : MonoBehaviour, IMineTriggerable
     {
         private IMover _mover;
-        private Vector3 _position;
-        
+        private Vector3 _targetMovePosition;
         private bool _isChangePosition = false;
-
-        public Vector3 Position => _position;
-        public bool IsFinishing => _mover.IsFinishing;
         
+        private HealthSystem _healthSystem;
+        
+        public Vector3 TargetMovePosition => _targetMovePosition;
+        public bool IsFinishing => _mover.IsFinishing;
         public IAnimatorMove AnimatorMove {get ; private set;}
 
-        public void Initialize(IMover mover, IAnimatorMove animatorMove)
+        public void Initialize(IMover mover, IAnimatorMove animatorMove, HealthSystem healthSystem)
         {
             _mover = mover;
             AnimatorMove = animatorMove;
+            _healthSystem = healthSystem;
         }
         
         public void SetPositionToMove(Vector3 position)
         {
-            _position = position;
+            _targetMovePosition = position;
             _isChangePosition = true;
         }
         
@@ -32,7 +32,7 @@ namespace _Game.Scripts
             if (_isChangePosition)
             {
                 _isChangePosition = false;
-                _mover.Move(_position);
+                _mover.Move(_targetMovePosition);
             }
         }
     }
