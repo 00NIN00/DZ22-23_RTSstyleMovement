@@ -4,10 +4,12 @@ namespace _Game.Scripts
 {
     public class Caster : MonoBehaviour
     {
+        [SerializeField] private LayerMask _groundLayerMask;
+        
         private Input _input;
         private Character _character;
         private Transform _flagTransform;
-        
+
         public void Initialize(Input input, Character character, Transform flagTransform)
         {
             _input = input;
@@ -27,7 +29,7 @@ namespace _Game.Scripts
         {
             Ray ray = Camera.ScreenPointToRay(position);
 
-            if (Physics.Raycast(ray, out RaycastHit hit))
+            if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, _groundLayerMask))
             {
                 if (hit.collider != null)
                 {
