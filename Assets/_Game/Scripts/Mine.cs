@@ -8,14 +8,15 @@ namespace _Game.Scripts
         [SerializeField] private float _radius;
         [SerializeField] private float _damage;
         [SerializeField] private float _time;
-
+        [SerializeField] private ParticleSystem _boomParticleSystem;
+        private bool _isExplored;
         private Timer _timer;
-        private HealthSystem _health;
 
         private void Awake()
         {
             _timer = new Timer();
             GetComponent<SphereCollider>().radius = _radius;
+            
         }
 
         private void Update()
@@ -28,6 +29,9 @@ namespace _Game.Scripts
             {
                 _timer.Update();
             }
+            
+            if (!_boomParticleSystem.isPlaying && _isExplored)
+                gameObject.SetActive(false);
         }
 
         private void Explosion()
@@ -42,7 +46,10 @@ namespace _Game.Scripts
                 }
             }
 
-            gameObject.SetActive(false);
+            
+            _isExplored =  true;
+            
+            _boomParticleSystem.Play();
         }
 
         private void OnTriggerEnter(Collider other)
