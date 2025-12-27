@@ -17,11 +17,12 @@ namespace _Game.Scripts
 
         private void Awake()
         {
-            _caster.Initialize(new Input(), _character, _flagTransform);
             _healthSystem.Initialize(_maxHealth);
             
             var agentMover = new AgentMover(_navMeshAgent);
             _character.Initialize(agentMover, agentMover, _healthSystem);
+            
+            _caster.Initialize(new Input(), _character);
             
             _viewCharacter.Initialize(_character.AnimatorMove, _healthSystem);
         }

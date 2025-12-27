@@ -1,9 +1,8 @@
-using System;
 using UnityEngine;
 
 namespace _Game.Scripts
 {
-    public class HealthSystem : MonoBehaviour, IAnimatorHealth
+    public class HealthSystem : MonoBehaviour, IDamageable, IHealable, IAnimatorHealth
     {
         [SerializeField] private float _maxHealth;
         private float _health;
@@ -19,7 +18,6 @@ namespace _Game.Scripts
             _maxHealth = maxHealth;
             _health = _maxHealth;
         }
-
 
         private void Update()
         {
@@ -59,13 +57,5 @@ namespace _Game.Scripts
             
             return false;
         }
-    }
-
-    public interface IAnimatorHealth
-    {
-        public float Health { get; }
-        public float MaxHealth { get; }
-        bool IsAlive { get; }
-        bool TakeDamageTrigger();
     }
 }

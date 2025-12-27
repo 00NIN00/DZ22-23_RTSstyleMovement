@@ -8,13 +8,11 @@ namespace _Game.Scripts
         
         private Input _input;
         private Character _character;
-        private Transform _flagTransform;
 
-        public void Initialize(Input input, Character character, Transform flagTransform)
+        public void Initialize(Input input, Character character)
         {
             _input = input;
             _character = character;
-            _flagTransform = flagTransform;
         }
         
         private Camera Camera => Camera.main;
