@@ -5,6 +5,6 @@ namespace _Game.Scripts
         public float Health { get; }
         public float MaxHealth { get; }
         bool IsAlive { get; }
-        bool TakeDamageTrigger();
+        bool TakeDamageEvent();
     }
 }

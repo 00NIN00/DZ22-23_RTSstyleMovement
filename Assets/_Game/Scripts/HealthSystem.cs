@@ -47,7 +47,7 @@ namespace _Game.Scripts
                 _health = _maxHealth;
         }
 
-        public bool TakeDamageTrigger()
+        public bool TakeDamageEvent()
         {
             if (_isTakeDamage)
             {

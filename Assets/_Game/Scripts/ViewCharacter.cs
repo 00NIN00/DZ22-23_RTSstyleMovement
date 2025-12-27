@@ -35,7 +35,7 @@ namespace _Game.Scripts
                 return;
             }
             
-            if (_animatorHealth.TakeDamageTrigger())
+            if (_animatorHealth.TakeDamageEvent())
                 _animator.SetTrigger(TakeDamage);
 
             
@@ -49,6 +49,5 @@ namespace _Game.Scripts
         }
 
         private bool IsWounded(float percent) => _animatorHealth.Health <= _animatorHealth.MaxHealth * percent;
-
     }
 }
