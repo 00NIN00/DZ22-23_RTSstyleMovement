@@ -1,6 +1,7 @@
+using _Game.Scripts.Entity;
 using UnityEngine;
 
-namespace _Game.Scripts
+namespace _Game.Scripts.View
 {
     public class ViewTargetPointCharacter : MonoBehaviour
     {

@@ -1,6 +1,8 @@
+using _Game.Scripts.Auxiliary;
+using _Game.Scripts.HealthSystem;
 using UnityEngine;
 
-namespace _Game.Scripts
+namespace _Game.Scripts.Entity
 {
     [RequireComponent(typeof(SphereCollider))]
     public class Mine : MonoBehaviour

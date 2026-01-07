@@ -1,7 +1,8 @@
-using UnityEngine.AI;
+using _Game.Scripts.View;
 using UnityEngine;
+using UnityEngine.AI;
 
-namespace _Game.Scripts
+namespace _Game.Scripts.MoveSystem
 {
     public class AgentMover : IMover, IAnimatorMove
     {

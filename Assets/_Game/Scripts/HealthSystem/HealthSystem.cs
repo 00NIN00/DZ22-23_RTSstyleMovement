@@ -1,6 +1,7 @@
+using _Game.Scripts.View;
 using UnityEngine;
 
-namespace _Game.Scripts
+namespace _Game.Scripts.HealthSystem
 {
     public class HealthSystem : MonoBehaviour, IDamageable, IHealable, IAnimatorHealth
     {

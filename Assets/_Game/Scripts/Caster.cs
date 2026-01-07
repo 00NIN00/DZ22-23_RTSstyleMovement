@@ -1,3 +1,4 @@
+using _Game.Scripts.Entity;
 using UnityEngine;
 
 namespace _Game.Scripts

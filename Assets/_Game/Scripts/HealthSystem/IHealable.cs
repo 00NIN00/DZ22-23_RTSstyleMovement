@@ -1,4 +1,4 @@
-namespace _Game.Scripts
+namespace _Game.Scripts.HealthSystem
 {
     public interface IHealable
     {

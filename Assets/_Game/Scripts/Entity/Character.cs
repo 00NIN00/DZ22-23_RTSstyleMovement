@@ -1,6 +1,8 @@
+using _Game.Scripts.MoveSystem;
+using _Game.Scripts.View;
 using UnityEngine;
 
-namespace _Game.Scripts
+namespace _Game.Scripts.Entity
 {
     public class Character : MonoBehaviour, IMineTriggerable
     {
@@ -8,13 +10,13 @@ namespace _Game.Scripts
         private Vector3 _targetMovePosition;
         private bool _isChangePosition = false;
         
-        private HealthSystem _healthSystem;
+        private HealthSystem.HealthSystem _healthSystem;
         
         public Vector3 TargetMovePosition => _targetMovePosition;
         public bool IsFinishing => _mover.IsFinishing;
         public IAnimatorMove AnimatorMove {get ; private set;}
 
-        public void Initialize(IMover mover, IAnimatorMove animatorMove, HealthSystem healthSystem)
+        public void Initialize(IMover mover, IAnimatorMove animatorMove, HealthSystem.HealthSystem healthSystem)
         {
             _mover = mover;
             AnimatorMove = animatorMove;

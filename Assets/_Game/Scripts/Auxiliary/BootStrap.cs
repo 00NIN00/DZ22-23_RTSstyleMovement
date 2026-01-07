@@ -1,7 +1,10 @@
+using _Game.Scripts.Entity;
+using _Game.Scripts.MoveSystem;
+using _Game.Scripts.View;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace _Game.Scripts
+namespace _Game.Scripts.Auxiliary
 {
     public class BootStrap : MonoBehaviour
     {
@@ -10,7 +13,7 @@ namespace _Game.Scripts
         [Header("Character")]
         [SerializeField] private Character _character;
         [SerializeField] private float _maxHealth;
-        [SerializeField] private HealthSystem _healthSystem;
+        [SerializeField] private HealthSystem.HealthSystem _healthSystem;
         [Header("Components")]
         [SerializeField] private NavMeshAgent _navMeshAgent;
         [SerializeField] private ViewCharacter _viewCharacter;
