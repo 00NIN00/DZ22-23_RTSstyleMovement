@@ -4,7 +4,7 @@ using UnityEngine.AI;
 
 namespace _Game.Scripts.MoveSystem
 {
-    public class AgentMover : IMover, IAnimatorMove
+    public class AgentMover : IMover, IMoveView
     {
         private readonly NavMeshAgent _agent;
         public bool IsFinishing =>  !_agent.pathPending && !_agent.hasPath && _agent.remainingDistance <= _agent.stoppingDistance;

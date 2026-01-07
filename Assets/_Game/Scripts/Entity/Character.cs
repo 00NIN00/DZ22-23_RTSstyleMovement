@@ -10,17 +10,17 @@ namespace _Game.Scripts.Entity
         private Vector3 _targetMovePosition;
         private bool _isChangePosition = false;
         
-        private HealthSystem.HealthSystem _healthSystem;
+        private HealthSystem.HealthViewSystem _healthViewSystem;
         
         public Vector3 TargetMovePosition => _targetMovePosition;
         public bool IsFinishing => _mover.IsFinishing;
-        public IAnimatorMove AnimatorMove {get ; private set;}
+        public IMoveView MoveView {get ; private set;}
 
-        public void Initialize(IMover mover, IAnimatorMove animatorMove, HealthSystem.HealthSystem healthSystem)
+        public void Initialize(IMover mover, IMoveView moveView, HealthSystem.HealthViewSystem healthViewSystem)
         {
             _mover = mover;
-            AnimatorMove = animatorMove;
-            _healthSystem = healthSystem;
+            MoveView = moveView;
+            _healthViewSystem = healthViewSystem;
         }
         
         public void SetPositionToMove(Vector3 position)
@@ -31,7 +31,7 @@ namespace _Game.Scripts.Entity
         
         private void Update()
         {
-            if (_healthSystem.IsAlive == false)
+            if (_healthViewSystem.IsAlive == false)
             {
                 _mover.StopMoving();
                 return;

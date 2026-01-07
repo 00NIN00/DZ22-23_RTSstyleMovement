@@ -14,28 +14,28 @@ namespace _Game.Scripts.View
         
         [SerializeField] private Animator _animator;
         
-        private IAnimatorMove _animatorMove;
-        private IAnimatorHealth _animatorHealth;
+        private IMoveView _moveView;
+        private IHealthView _healthView;
 
 
-        public void Initialize(IAnimatorMove animatorMove, IAnimatorHealth animatorHealth)
+        public void Initialize(IMoveView moveView, IHealthView healthView)
         {
-            _animatorMove = animatorMove;
-            _animatorHealth = animatorHealth;
+            _moveView = moveView;
+            _healthView = healthView;
             
             _injuredLayerIndex = _animator.GetLayerIndex(_injuredLayer);
         }
 
         private void Update()
         {
-            if (_animatorHealth.IsAlive == false)
+            if (_healthView.IsAlive == false)
             {
                 _animator.SetBool(IsDeath, true);
                 
                 return;
             }
             
-            if (_animatorHealth.TakeDamageEvent())
+            if (_healthView.TakeDamageEvent())
                 _animator.SetTrigger(TakeDamage);
 
             
@@ -45,9 +45,9 @@ namespace _Game.Scripts.View
                 _animator.SetLayerWeight(_injuredLayerIndex, WeightOnLayer);
             }
             
-            _animator.SetFloat(Speed, _animatorMove.Speed);
+            _animator.SetFloat(Speed, _moveView.Speed);
         }
 
-        private bool IsWounded(float percent) => _animatorHealth.Health <= _animatorHealth.MaxHealth * percent;
+        private bool IsWounded(float percent) => _healthView.Health <= _healthView.MaxHealth * percent;
     }
 }

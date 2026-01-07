@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace _Game.Scripts.HealthSystem
 {
-    public class HealthSystem : MonoBehaviour, IDamageable, IHealable, IAnimatorHealth
+    public class HealthViewSystem : MonoBehaviour, IDamageable, IHealable, IHealthView
     {
         [SerializeField] private float _maxHealth;
         private float _health;

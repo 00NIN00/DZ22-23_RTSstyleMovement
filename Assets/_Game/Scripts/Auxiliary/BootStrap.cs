@@ -13,21 +13,21 @@ namespace _Game.Scripts.Auxiliary
         [Header("Character")]
         [SerializeField] private Character _character;
         [SerializeField] private float _maxHealth;
-        [SerializeField] private HealthSystem.HealthSystem _healthSystem;
+        [SerializeField] private HealthSystem.HealthViewSystem healthViewSystem;
         [Header("Components")]
         [SerializeField] private NavMeshAgent _navMeshAgent;
         [SerializeField] private ViewCharacter _viewCharacter;
 
         private void Awake()
         {
-            _healthSystem.Initialize(_maxHealth);
+            healthViewSystem.Initialize(_maxHealth);
             
             var agentMover = new AgentMover(_navMeshAgent);
-            _character.Initialize(agentMover, agentMover, _healthSystem);
+            _character.Initialize(agentMover, agentMover, healthViewSystem);
             
             _caster.Initialize(new Input(), _character);
             
-            _viewCharacter.Initialize(_character.AnimatorMove, _healthSystem);
+            _viewCharacter.Initialize(_character.MoveView, healthViewSystem);
         }
     }
 }
