@@ -1,4 +1,5 @@
 using _Game.Scripts.Entity;
+using _Game.Scripts.HealthSystem;
 using _Game.Scripts.MoveSystem;
 using _Game.Scripts.View;
 using UnityEngine;
@@ -10,24 +11,25 @@ namespace _Game.Scripts.Auxiliary
     {
         [SerializeField] private Caster _caster;
         [SerializeField] private Transform _flagTransform;
+        
         [Header("Character")]
         [SerializeField] private Character _character;
         [SerializeField] private float _maxHealth;
-        [SerializeField] private HealthSystem.HealthViewSystem healthViewSystem;
+        
         [Header("Components")]
         [SerializeField] private NavMeshAgent _navMeshAgent;
         [SerializeField] private ViewCharacter _viewCharacter;
 
         private void Awake()
         {
-            healthViewSystem.Initialize(_maxHealth);
-            
+            var playerHealth = new Health(_maxHealth);
             var agentMover = new AgentMover(_navMeshAgent);
-            _character.Initialize(agentMover, agentMover, healthViewSystem);
+            
+            _character.Initialize(agentMover, agentMover, playerHealth);
             
             _caster.Initialize(new Input(), _character);
             
-            _viewCharacter.Initialize(_character.MoveView, healthViewSystem);
+            _viewCharacter.Initialize(_character.MoveView, playerHealth);
         }
     }
 }

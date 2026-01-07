@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.08031098, g: 0.09970303, b: 0.30110666, a: 1}
+  m_IndirectSpecularColor: {r: 0.08048055, g: 0.0998797, b: 0.30130574, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -16084,7 +16084,6 @@ MonoBehaviour:
   _flagTransform: {fileID: 1372133638}
   _character: {fileID: 2136186803}
   _maxHealth: 10
-  _healthSystem: {fileID: 2136186806}
   _navMeshAgent: {fileID: 2136186801}
   _viewCharacter: {fileID: 392251827}
 --- !u!4 &1081578690
@@ -17399,9 +17398,7 @@ GameObject:
   - component: {fileID: 2136186802}
   - component: {fileID: 2136186801}
   - component: {fileID: 2136186803}
-  - component: {fileID: 2136186804}
   - component: {fileID: 2136186805}
-  - component: {fileID: 2136186806}
   - component: {fileID: 2136186807}
   - component: {fileID: 2136186808}
   m_Layer: 0
@@ -17421,7 +17418,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 11.58
+  m_Speed: 11.5
   m_Acceleration: 999
   avoidancePriority: 50
   m_AngularSpeed: 999
@@ -17461,18 +17458,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b03b52641d9146c428cffdb658e36109, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2136186804
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2136186800}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34be9bfa7f8f43e68fdd25553b0810c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2136186805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17487,19 +17472,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _character: {fileID: 2136186803}
   _flag: {fileID: 1372133639}
---- !u!114 &2136186806
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2136186800}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c26a1cbc0dc5479dba116a9b01b1dbcc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxHealth: 10
 --- !u!54 &2136186807
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -17623,11 +17595,11 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 330585546}
+  - {fileID: 1337148644}
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 1081578690}
   - {fileID: 2130240141}
-  - {fileID: 1337148644}
   - {fileID: 1013432007}
   - {fileID: 629087628}
   - {fileID: 1117433174}
