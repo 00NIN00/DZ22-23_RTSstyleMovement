@@ -55,6 +55,7 @@ namespace _Game.Scripts.Entity
                     damageable.TakeDamage(_damage);
                 }
             }
+            
             _isExplored =  true;
             
             _boomParticleSystem.Play();
@@ -62,7 +63,7 @@ namespace _Game.Scripts.Entity
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent(out IMineTriggerable _))
+            if (other.TryGetComponent(out IMineTriggerable _) && _isExplored == false)
             {
                 _timer.TryStart(_time);
             }
