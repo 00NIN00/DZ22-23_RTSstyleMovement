@@ -7,7 +7,7 @@ using UnityEngine.AI;
 
 namespace _Game.Scripts.Auxiliary
 {
-    public class BootStrap : MonoBehaviour
+    public class Bootstrap : MonoBehaviour
     {
         [SerializeField] private Caster _caster;
         [SerializeField] private Transform _flagTransform;
