@@ -1,35 +1,39 @@
+using _Game.Scripts.CopyingFromCourse;
 using _Game.Scripts.Entity;
 using _Game.Scripts.HealthSystem;
-using _Game.Scripts.MoveSystem;
 using _Game.Scripts.View;
-using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine;
 
 namespace _Game.Scripts.Auxiliary
 {
     public class Bootstrap : MonoBehaviour
     {
-        [SerializeField] private Caster _caster;
-        [SerializeField] private Transform _flagTransform;
-        
+        [SerializeField] private ViewTargetPointCharacter _viewTargetPointCharacter;
+        [SerializeField] private Flag _flag;
         [Header("Character")]
-        [SerializeField] private Character _character;
+        [SerializeField] private AgentCharacter _character;
         [SerializeField] private float _maxHealth;
+        [SerializeField] private LayerMask _layerMask;
+
+        [SerializeField] private ControllerUpdater _controllerUpdater;
         
         [Header("Components")]
         [SerializeField] private NavMeshAgent _navMeshAgent;
-        [SerializeField] private ViewCharacter _viewCharacter;
+        [SerializeField] private CharacterView _viewCharacter;
 
         private void Awake()
         {
             var playerHealth = new Health(_maxHealth);
-            var agentMover = new AgentMover(_navMeshAgent);
             
-            _character.Initialize(agentMover, agentMover, playerHealth);
+            _character.Initialize(playerHealth, _navMeshAgent);
+
+            var moveController = new DestinationController(new Input(), _character, _layerMask);
+            var rotateController = new AlongMovableDestinationRotatableController(_character, _character);
+            _controllerUpdater.Initialize(moveController, rotateController);
             
-            _caster.Initialize(new Input(), _character);
-            
-            _viewCharacter.Initialize(_character.MoveView, playerHealth);
+            _viewTargetPointCharacter.Initialize(_character, _flag);
+            _viewCharacter.Initialize(_character, playerHealth);
         }
     }
 }

@@ -1,29 +1,30 @@
-using _Game.Scripts.Entity;
+using _Game.Scripts.CopyingFromCourse;
 using UnityEngine;
 
 namespace _Game.Scripts
 {
-    public class Caster : MonoBehaviour
+    public class DestinationController : Controller
     {
-        [SerializeField] private LayerMask _groundLayerMask;
+        private LayerMask _groundLayerMask;
         
         private Input _input;
-        private Character _character;
+        private AgentCharacter _character;
 
-        public void Initialize(Input input, Character character)
+        public DestinationController(Input input,  AgentCharacter character, LayerMask groundLayerMask)
         {
             _input = input;
             _character = character;
+            _groundLayerMask = groundLayerMask;
         }
         
         private Camera Camera => Camera.main;
-
-        private void Update()
+        
+        protected override void UpdateLogic(float deltaTime)
         {
             if (_input.Button)
                 Cast(_input.Position);
         }
-
+        
         private void Cast(Vector2 position)
         {
             Ray ray = Camera.ScreenPointToRay(position);
@@ -32,7 +33,7 @@ namespace _Game.Scripts
             {
                 if (hit.collider != null)
                 {
-                    _character.SetPositionToMove(hit.point);
+                    _character.SetDestination(hit.point);
                 }
             }
         }

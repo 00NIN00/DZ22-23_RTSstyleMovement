@@ -42,6 +42,8 @@ namespace _Game.Scripts.HealthSystem
 
             if (_value <= 0)
                 _value = 0;
+            
+            Debug.Log(_value);
         }
 
         public void Add(float heal)
