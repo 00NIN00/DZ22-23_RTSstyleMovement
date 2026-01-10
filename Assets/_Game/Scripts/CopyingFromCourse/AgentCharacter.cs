@@ -4,7 +4,7 @@ using UnityEngine.AI;
 
 namespace _Game.Scripts.CopyingFromCourse
 {
-    public class AgentCharacter  : MonoBehaviour, IMineTriggerable, IDamageable, IDirectionalRotatable
+    public class AgentCharacter : MonoBehaviour, IMineTriggerable, IDamageable, IDirectionalRotatable, IDestinationMovable
     {
         private NavMeshAgent _agent;
         

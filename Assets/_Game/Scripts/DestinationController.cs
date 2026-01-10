@@ -8,12 +8,12 @@ namespace _Game.Scripts
         private LayerMask _groundLayerMask;
         
         private Input _input;
-        private AgentCharacter _character;
+        private IDestinationMovable _destinationMovable;
 
-        public DestinationController(Input input,  AgentCharacter character, LayerMask groundLayerMask)
+        public DestinationController(Input input,  AgentCharacter destinationMovable, LayerMask groundLayerMask)
         {
             _input = input;
-            _character = character;
+            _destinationMovable = destinationMovable;
             _groundLayerMask = groundLayerMask;
         }
         
@@ -33,7 +33,7 @@ namespace _Game.Scripts
             {
                 if (hit.collider != null)
                 {
-                    _character.SetDestination(hit.point);
+                    _destinationMovable.SetDestination(hit.point);
                 }
             }
         }
