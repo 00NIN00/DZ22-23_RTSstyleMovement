@@ -1,7 +1,7 @@
-using _Game.Scripts.View;
+using _Game.Scripts.Entity;
 using UnityEngine;
 
-namespace _Game.Scripts.CopyingFromCourse
+namespace _Game.Scripts.View
 {
     public class CharacterView : MonoBehaviour
     {
@@ -16,28 +16,28 @@ namespace _Game.Scripts.CopyingFromCourse
         private int _injuredLayerIndex;
 
 
-        private IHealthView _healthView;
+        private IHealthForView _healthForView;
         private AgentCharacter _character;
         [SerializeField] private Animator _animator;
 
-        public void Initialize(AgentCharacter character, IHealthView healthView)
+        public void Initialize(AgentCharacter character, IHealthForView healthForView)
         {
             _character = character;
-            _healthView = healthView;
+            _healthForView = healthForView;
             
             _injuredLayerIndex = _animator.GetLayerIndex(InjuredLayer);
         }
 
         private void Update()
         {
-            if (_healthView.IsAlive == false)
+            if (_healthForView.IsAlive == false)
             {
                 _animator.SetBool(IsDeath, true);
 
                 return;
             }
 
-            if (_healthView.TakeDamageEvent())
+            if (_healthForView.TakeDamageEvent())
                 _animator.SetTrigger(TakeDamage);
 
             if (IsWounded(PercentWounded))
@@ -48,6 +48,6 @@ namespace _Game.Scripts.CopyingFromCourse
             _animator.SetFloat(IsRunningKey, _character.CurrentVelocity.magnitude);
         }
 
-        private bool IsWounded(float percent) => _healthView.Value <= _healthView.MaxValue * percent;
+        private bool IsWounded(float percent) => _healthForView.Value <= _healthForView.MaxValue * percent;
     }
 }

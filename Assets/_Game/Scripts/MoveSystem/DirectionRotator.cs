@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace _Game.Scripts.CopyingFromCourse
+namespace _Game.Scripts.MoveSystem
 {
     public class DirectionRotator
     {

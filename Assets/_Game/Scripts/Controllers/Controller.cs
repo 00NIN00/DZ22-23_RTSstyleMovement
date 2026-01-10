@@ -1,4 +1,4 @@
-namespace _Game.Scripts.CopyingFromCourse
+namespace _Game.Scripts.Controllers
 {
     public abstract class Controller
     {

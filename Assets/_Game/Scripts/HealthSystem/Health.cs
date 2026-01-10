@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace _Game.Scripts.HealthSystem
 {
-    public class Health : IHealthView
+    public class Health : IHealthForView
     {
         private readonly float _maxValue;
         private float _value;

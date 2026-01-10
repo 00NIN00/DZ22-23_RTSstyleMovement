@@ -1,7 +1,10 @@
 using _Game.Scripts.CopyingFromCourse;
+using _Game.Scripts.Entity;
+using _Game.Scripts.MoveSystem;
+using _Game.Scripts.RotateSystem;
 using UnityEngine;
 
-namespace _Game.Scripts
+namespace _Game.Scripts.Controllers
 {
     public class DestinationController : Controller
     {

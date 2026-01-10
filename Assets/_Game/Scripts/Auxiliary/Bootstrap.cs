@@ -1,3 +1,4 @@
+using _Game.Scripts.Controllers;
 using _Game.Scripts.CopyingFromCourse;
 using _Game.Scripts.Entity;
 using _Game.Scripts.HealthSystem;
@@ -11,6 +12,7 @@ namespace _Game.Scripts.Auxiliary
     {
         [SerializeField] private ViewTargetPointCharacter _viewTargetPointCharacter;
         [SerializeField] private Flag _flag;
+        
         [Header("Character")]
         [SerializeField] private AgentCharacter _character;
         [SerializeField] private float _maxHealth;

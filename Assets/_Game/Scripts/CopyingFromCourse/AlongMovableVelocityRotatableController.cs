@@ -1,3 +1,6 @@
+using _Game.Scripts.Controllers;
+using _Game.Scripts.RotateSystem;
+
 namespace _Game.Scripts.CopyingFromCourse
 {
     public class AlongMovableVelocityRotatableController : Controller

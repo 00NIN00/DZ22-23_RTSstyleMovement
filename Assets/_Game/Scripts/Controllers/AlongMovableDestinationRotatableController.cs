@@ -1,4 +1,8 @@
-namespace _Game.Scripts.CopyingFromCourse
+using _Game.Scripts.CopyingFromCourse;
+using _Game.Scripts.Entity;
+using _Game.Scripts.RotateSystem;
+
+namespace _Game.Scripts.Controllers
 {
     public class AlongMovableDestinationRotatableController : Controller
     {

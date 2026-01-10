@@ -1,6 +1,6 @@
 namespace _Game.Scripts.View
 {
-    public interface IHealthView
+    public interface IHealthForView
     {
         public float Value { get; }
         public float MaxValue { get; }

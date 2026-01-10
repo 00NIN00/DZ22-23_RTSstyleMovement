@@ -1,6 +1,7 @@
+using _Game.Scripts.CopyingFromCourse;
 using UnityEngine;
 
-namespace _Game.Scripts.CopyingFromCourse
+namespace _Game.Scripts.Controllers
 {
     public class ControllerUpdater : MonoBehaviour
     {

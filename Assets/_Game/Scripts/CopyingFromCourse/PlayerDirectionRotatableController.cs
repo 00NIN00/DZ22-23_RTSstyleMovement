@@ -1,3 +1,5 @@
+using _Game.Scripts.Controllers;
+using _Game.Scripts.RotateSystem;
 using UnityEngine;
 
 namespace _Game.Scripts.CopyingFromCourse
