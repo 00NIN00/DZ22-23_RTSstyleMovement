@@ -14,6 +14,8 @@ namespace _Game.Scripts.Auxiliary
         [Header("Character")]
         [SerializeField] private AgentCharacter _character;
         [SerializeField] private float _maxHealth;
+        [SerializeField] private float _speedMove;
+        [SerializeField] private float _speedRotate;
         [SerializeField] private LayerMask _layerMask;
 
         [SerializeField] private ControllerUpdater _controllerUpdater;
@@ -26,7 +28,7 @@ namespace _Game.Scripts.Auxiliary
         {
             var playerHealth = new Health(_maxHealth);
             
-            _character.Initialize(playerHealth, _navMeshAgent);
+            _character.Initialize(playerHealth, _navMeshAgent, _speedMove, _speedRotate);
 
             var moveController = new DestinationController(new Input(), _character, _layerMask);
             var rotateController = new AlongMovableDestinationRotatableController(_character, _character);

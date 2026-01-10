@@ -11,8 +11,8 @@ namespace _Game.Scripts.CopyingFromCourse
         private AgentMover _mover;
         private DirectionRotator _rotator;
         
-        [SerializeField] private float _moveSpeed;
-        [SerializeField] private float _rotateSpeed;
+        private float _moveSpeed;
+        private float _rotateSpeed;
         
         public Vector3 CurrentVelocity => _mover.CurrentVelocity;
         public Quaternion CurrentRotation => _rotator.CurrentRotation;
@@ -21,12 +21,15 @@ namespace _Game.Scripts.CopyingFromCourse
         public bool IsFinishing => !_agent.pathPending && !_agent.hasPath && _agent.remainingDistance <= _agent.stoppingDistance;
 
         private Health _health;
-        
-        public void Initialize(Health health,  NavMeshAgent agent)
+
+        public void Initialize(Health health,  NavMeshAgent agent, float moveSpeed, float rotateSpeed)
         {
             _health = health;
             _agent = agent;
-            
+
+            _moveSpeed = moveSpeed;
+            _rotateSpeed = rotateSpeed;
+
             _agent.updateRotation = false;
 
             _mover = new AgentMover(_agent, _moveSpeed);
