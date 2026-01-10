@@ -1,9 +1,8 @@
-using _Game.Scripts.CopyingFromCourse;
 using _Game.Scripts.HealthSystem;
 using _Game.Scripts.MoveSystem;
 using _Game.Scripts.RotateSystem;
-using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine;
 
 namespace _Game.Scripts.Entity
 {

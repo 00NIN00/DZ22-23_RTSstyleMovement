@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace _Game.Scripts.RotateSystem
+namespace _Game.Scripts.MoveSystem
 {
     public interface IDestinationMovable
     {

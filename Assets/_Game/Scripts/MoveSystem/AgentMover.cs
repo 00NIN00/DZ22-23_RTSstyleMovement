@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace _Game.Scripts.CopyingFromCourse
+namespace _Game.Scripts.MoveSystem
 {
     public class AgentMover
     {

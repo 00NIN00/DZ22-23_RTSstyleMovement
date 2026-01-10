@@ -13,7 +13,7 @@ namespace _Game.Scripts.Controllers
         private Input _input;
         private IDestinationMovable _destinationMovable;
 
-        public DestinationController(Input input,  AgentCharacter destinationMovable, LayerMask groundLayerMask)
+        public DestinationController(Input input,  IDestinationMovable destinationMovable, LayerMask groundLayerMask)
         {
             _input = input;
             _destinationMovable = destinationMovable;
