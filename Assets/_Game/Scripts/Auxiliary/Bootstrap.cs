@@ -2,6 +2,7 @@ using _Game.Scripts.Controllers;
 using _Game.Scripts.CopyingFromCourse;
 using _Game.Scripts.Entity;
 using _Game.Scripts.HealthSystem;
+using _Game.Scripts.SpawnSystem;
 using _Game.Scripts.View;
 using UnityEngine.AI;
 using UnityEngine;
@@ -12,6 +13,8 @@ namespace _Game.Scripts.Auxiliary
     {
         [SerializeField] private ViewTargetPointCharacter _viewTargetPointCharacter;
         [SerializeField] private Flag _flag;
+        
+        [SerializeField] private SpawnerHandler _spawner;
         
         [Header("Character")]
         [SerializeField] private AgentCharacter _character;
@@ -28,11 +31,14 @@ namespace _Game.Scripts.Auxiliary
 
         private void Awake()
         {
+            var playerInput = new Input();
             var playerHealth = new Health(_maxHealth);
             
             _character.Initialize(playerHealth, _navMeshAgent, _speedMove, _speedRotate);
 
-            var moveController = new DestinationController(new Input(), _character, _layerMask);
+            _spawner.Initialize(new Spawner(_character.transform, _spawner),  playerInput);
+            
+            var moveController = new DestinationController(playerInput, _character, _layerMask);
             var rotateController = new AlongMovableDestinationRotatableController(_character, _character);
             _controllerUpdater.Initialize(moveController, rotateController);
             

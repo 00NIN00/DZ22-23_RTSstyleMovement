@@ -3,6 +3,7 @@ using _Game.Scripts.Entity;
 using _Game.Scripts.MoveSystem;
 using _Game.Scripts.RotateSystem;
 using UnityEngine;
+using Input = _Game.Scripts.Auxiliary.Input;
 
 namespace _Game.Scripts.Controllers
 {

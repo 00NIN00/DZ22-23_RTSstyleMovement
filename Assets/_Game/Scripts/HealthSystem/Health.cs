@@ -55,6 +55,8 @@ namespace _Game.Scripts.HealthSystem
 
             if (_value >= 0)
                 _value = _maxValue;
+            
+            Debug.Log(_value);
         }
 
         public bool TakeDamageEvent()

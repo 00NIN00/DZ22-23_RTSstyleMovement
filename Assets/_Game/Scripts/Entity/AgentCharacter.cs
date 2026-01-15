@@ -1,3 +1,4 @@
+using _Game.Scripts.Auxiliary;
 using _Game.Scripts.HealthSystem;
 using _Game.Scripts.MoveSystem;
 using _Game.Scripts.RotateSystem;
@@ -6,7 +7,7 @@ using UnityEngine;
 
 namespace _Game.Scripts.Entity
 {
-    public class AgentCharacter : MonoBehaviour, IMineTriggerable, IDamageable, IDirectionalRotatable, IDestinationMovable
+    public class AgentCharacter : MonoBehaviour, IMineTriggerable, IDamageable, IDirectionalRotatable, IDestinationMovable, IHealable
     {
         private NavMeshAgent _agent;
         
@@ -59,6 +60,11 @@ namespace _Game.Scripts.Entity
         {
             if (_health.CanRemove(damage))
                 _health.Remove(damage);
+        }
+
+        public void Heal(float heal)
+        {
+            _health.Add(heal);
         }
     }
 }
