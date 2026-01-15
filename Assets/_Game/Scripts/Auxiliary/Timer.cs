@@ -1,52 +1,48 @@
+using System.Collections;
 using UnityEngine;
 
 namespace _Game.Scripts.Auxiliary
 {
     public class Timer
     {
-        private float _timer;
-        
         private bool _isOver;
-        public bool IsProcess { get; private set; }
+        public bool IsProcess => _coroutine != null;
+
+        private Coroutine _coroutine;
+        private readonly MonoBehaviour _monoBehaviour;
+
+        public Timer(MonoBehaviour monoBehaviour)
+        {
+            _monoBehaviour = monoBehaviour;
+        }
         
         public bool TryStart(float timer)
         {
             if (IsProcess)
                 return false;
-            
-            _timer = timer;
-            IsProcess = true;
-            
+
+            _coroutine = _monoBehaviour.StartCoroutine(TimerProcess(timer));
+
             return true;
         }
 
-        public void Update()
+        private IEnumerator TimerProcess(float time)
         {
-            if (IsProcess && _timer > 0)
-                _timer -= Time.deltaTime;
+            yield return new WaitForSeconds(time);
 
-            if (_timer <= 0 && IsProcess)
-            {
-                IsProcess = false;
-                _isOver = true;;
-            }
+            _coroutine = null;
+            _isOver = true;
         }
 
         public bool IsOver()
         {
             if (_isOver)
             {
-                Reset();
+                _isOver = false;
                 return true;
             }
 
             return false;
-        }
-
-        private void Reset()
-        {
-            IsProcess = false;
-            _isOver = false;
         }
     }
 }

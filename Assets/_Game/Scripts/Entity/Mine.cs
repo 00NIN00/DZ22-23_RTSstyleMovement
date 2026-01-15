@@ -18,7 +18,7 @@ namespace _Game.Scripts.Entity
 
         private void Awake()
         {
-            _timer = new Timer();
+            _timer = new Timer(this);
             GetComponent<SphereCollider>().radius = _radius;
 
             _animatorScale = new AnimatorScale(transform.localScale, transform);
@@ -29,10 +29,6 @@ namespace _Game.Scripts.Entity
             if (_timer.IsOver())
             {
                 Explosion();
-            }
-            else
-            {
-                _timer.Update();
             }
 
             if (_timer.IsProcess)
