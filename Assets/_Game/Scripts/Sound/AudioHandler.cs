@@ -25,7 +25,7 @@ namespace _Game.Scripts.Sound
         public void OffMusic() => OffVolume(MusicKey);
         
         public void OnSound() => OnVolume(SoundKey);
-        public void OfSound() => OffVolume(SoundKey);
+        public void OffSound() => OffVolume(SoundKey);
         
         private bool IsVolumeOn(string key) => _audioMixer.GetFloat(key, out float volume) && Mathf.Abs(volume - OnVolumeValue) < 0.01f;
         

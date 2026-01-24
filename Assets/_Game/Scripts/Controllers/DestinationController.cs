@@ -1,3 +1,4 @@
+using _Game.Scripts.Auxiliary;
 using _Game.Scripts.CopyingFromCourse;
 using _Game.Scripts.Entity;
 using _Game.Scripts.MoveSystem;
@@ -25,6 +26,11 @@ namespace _Game.Scripts.Controllers
         
         protected override void UpdateLogic(float deltaTime)
         {
+            if (UiInputChecker.IsPointerOverUI())
+            {
+                return;
+            }
+            
             if (_input.Button)
                 Cast(_input.Position);
         }

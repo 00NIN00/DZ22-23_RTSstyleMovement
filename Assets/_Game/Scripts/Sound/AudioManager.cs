@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,8 +12,8 @@ namespace _Game.Scripts.Sound
 
         private void OnEnable()
         {
-            _changeMusicButton.onClick.AddListener(_audioHandler.OnMusic);
-            _changeSoundButton.onClick.AddListener(_audioHandler.OnSound);
+            _changeMusicButton.onClick.AddListener(ChangeMusic);
+            _changeSoundButton.onClick.AddListener(ChangeSound);
         }
 
         public void Initialize(AudioHandler audioHandler)
@@ -22,10 +21,35 @@ namespace _Game.Scripts.Sound
             _audioHandler = audioHandler;
         }
 
+        private void ChangeMusic()
+        {
+            if (_audioHandler.IsMusicOn())
+            {
+                _audioHandler.OffMusic();
+            }
+            else
+            {
+                _audioHandler.OnMusic();
+            }
+        }
+
+
+        private void ChangeSound()
+        {
+            if (_audioHandler.IsSoundOn())
+            {
+                _audioHandler.OffSound();
+            }
+            else
+            {
+                _audioHandler.OnSound();
+            }
+        }
+
         private void OnDisable()
         {
-            _changeMusicButton.onClick.RemoveListener(_audioHandler.OnMusic);
-            _changeSoundButton.onClick.RemoveListener(_audioHandler.OnSound);
+            _changeMusicButton.onClick.AddListener(ChangeMusic);
+            _changeSoundButton.onClick.AddListener(ChangeSound);
         }
     }
 }
