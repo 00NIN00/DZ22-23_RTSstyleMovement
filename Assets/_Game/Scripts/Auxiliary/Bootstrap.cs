@@ -2,10 +2,12 @@ using _Game.Scripts.Controllers;
 using _Game.Scripts.CopyingFromCourse;
 using _Game.Scripts.Entity;
 using _Game.Scripts.HealthSystem;
+using _Game.Scripts.Sound;
 using _Game.Scripts.SpawnSystem;
 using _Game.Scripts.View;
 using UnityEngine.AI;
 using UnityEngine;
+using UnityEngine.Audio;
 
 namespace _Game.Scripts.Auxiliary
 {
@@ -28,6 +30,11 @@ namespace _Game.Scripts.Auxiliary
         [Header("Components")]
         [SerializeField] private NavMeshAgent _navMeshAgent;
         [SerializeField] private CharacterView _viewCharacter;
+        
+        [Header("Audio")]
+        [SerializeField] private AudioManager _audioManager;
+        [SerializeField] private AudioMixer _audioMixer;
+        private AudioHandler _audioHandler; 
 
         private void Awake()
         {
@@ -44,6 +51,9 @@ namespace _Game.Scripts.Auxiliary
             
             _viewTargetPointCharacter.Initialize(_character, _flag);
             _viewCharacter.Initialize(_character, playerHealth);
+
+            _audioHandler = new AudioHandler(_audioMixer);
+            _audioManager.Initialize(_audioHandler);
         }
     }
 }
