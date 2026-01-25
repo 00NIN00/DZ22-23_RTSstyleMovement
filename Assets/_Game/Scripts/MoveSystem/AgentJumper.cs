@@ -10,12 +10,15 @@ namespace _Game.Scripts.MoveSystem
         
         private float _speedJump;
         private NavMeshAgent _agent;
+        private AnimationCurve  _yOffsetCurve;
         
         private Coroutine _coroutine;
-        public AgentJumper(MonoBehaviour coroutineRunner, float speedJump, NavMeshAgent agent)
+        
+        public AgentJumper(MonoBehaviour coroutineRunner, float speedJump, NavMeshAgent agent, AnimationCurve yOffsetCurve)
         {
             _speedJump = speedJump;
             _agent = agent;
+            _yOffsetCurve = yOffsetCurve;
             _coroutineRunner = coroutineRunner;
         }
         
@@ -40,7 +43,8 @@ namespace _Game.Scripts.MoveSystem
 
             while (progress < duration)
             {
-                _agent.transform.position = Vector3.Lerp(startPosition, endPosition, progress / duration);
+                float yOffset = _yOffsetCurve.Evaluate(progress / duration);
+                _agent.transform.position = Vector3.Lerp(startPosition, endPosition, progress / duration) + Vector3.up * yOffset;
                 progress += Time.deltaTime;
                 yield return null;
             }

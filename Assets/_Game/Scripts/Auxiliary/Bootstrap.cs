@@ -25,6 +25,7 @@ namespace _Game.Scripts.Auxiliary
         [SerializeField] private float _speedMove;
         [SerializeField] private float _speedRotate;
         [SerializeField] private float _jumpSpeed;
+        [SerializeField] private AnimationCurve _jumpCurve;
         [SerializeField] private LayerMask _layerMask;
 
         [SerializeField] private ControllerUpdater _controllerUpdater;
@@ -43,7 +44,7 @@ namespace _Game.Scripts.Auxiliary
             var playerInput = new Input();
             var playerHealth = new Health(_maxHealth);
             
-            _character.Initialize(playerHealth, _navMeshAgent, _speedMove, _speedRotate, _jumpSpeed);
+            _character.Initialize(playerHealth, _navMeshAgent, _speedMove, _speedRotate, _jumpSpeed, _jumpCurve);
 
             _spawner.Initialize(new Spawner(_character.transform, _spawner),  playerInput);
             

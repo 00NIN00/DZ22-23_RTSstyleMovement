@@ -32,7 +32,7 @@ namespace _Game.Scripts.Entity
 
         public bool InJumpProcess => _jumper.InProcess;
         
-        public void Initialize(Health health, NavMeshAgent agent, float moveSpeed, float rotateSpeed, float jumpSpeed)
+        public void Initialize(Health health, NavMeshAgent agent, float moveSpeed, float rotateSpeed, float jumpSpeed, AnimationCurve animationCurve)
         {
             _health = health;
             _agent = agent;
@@ -45,7 +45,7 @@ namespace _Game.Scripts.Entity
 
             _mover = new AgentMover(_agent, _moveSpeed);
             _rotator = new DirectionRotator(_agent.transform, _rotateSpeed);
-            _jumper = new AgentJumper(this, _jumpSpeed, _agent);
+            _jumper = new AgentJumper(this, _jumpSpeed, _agent, animationCurve);
         }
 
         private void Update()
