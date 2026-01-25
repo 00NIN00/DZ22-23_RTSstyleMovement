@@ -2,6 +2,7 @@ using _Game.Scripts.Controllers;
 using _Game.Scripts.CopyingFromCourse;
 using _Game.Scripts.Entity;
 using _Game.Scripts.HealthSystem;
+using _Game.Scripts.MoveSystem;
 using _Game.Scripts.Sound;
 using _Game.Scripts.SpawnSystem;
 using _Game.Scripts.View;
@@ -23,6 +24,7 @@ namespace _Game.Scripts.Auxiliary
         [SerializeField] private float _maxHealth;
         [SerializeField] private float _speedMove;
         [SerializeField] private float _speedRotate;
+        [SerializeField] private float _jumpSpeed;
         [SerializeField] private LayerMask _layerMask;
 
         [SerializeField] private ControllerUpdater _controllerUpdater;
@@ -34,18 +36,18 @@ namespace _Game.Scripts.Auxiliary
         [Header("Audio")]
         [SerializeField] private AudioManager _audioManager;
         [SerializeField] private AudioMixer _audioMixer;
-        private AudioHandler _audioHandler; 
+        private AudioHandler _audioHandler;
 
         private void Awake()
         {
             var playerInput = new Input();
             var playerHealth = new Health(_maxHealth);
             
-            _character.Initialize(playerHealth, _navMeshAgent, _speedMove, _speedRotate);
+            _character.Initialize(playerHealth, _navMeshAgent, _speedMove, _speedRotate, _jumpSpeed);
 
             _spawner.Initialize(new Spawner(_character.transform, _spawner),  playerInput);
             
-            var moveController = new DestinationController(playerInput, _character, _layerMask);
+            var moveController = new DestinationController(playerInput, _character, _layerMask, _character);
             var rotateController = new AlongMovableDestinationRotatableController(_character, _character);
             _controllerUpdater.Initialize(moveController, rotateController);
             
