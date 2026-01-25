@@ -5,6 +5,8 @@ namespace _Game.Scripts.View
 {
     public class CharacterView : MonoBehaviour
     {
+        private readonly int JumpKey = Animator.StringToHash("Jump");
+        private readonly int JumpProcessKey = Animator.StringToHash("JumpProcess");
         private readonly int IsRunningKey = Animator.StringToHash("Speed");
         private readonly int TakeDamage = Animator.StringToHash("TakeDamage");
         private readonly int IsDeath = Animator.StringToHash("IsDeath");
@@ -18,7 +20,11 @@ namespace _Game.Scripts.View
 
         private IHealthForView _healthForView;
         private AgentCharacter _character;
+
+        private bool _isJump = false;
+        
         [SerializeField] private Animator _animator;
+        
 
         public void Initialize(AgentCharacter character, IHealthForView healthForView)
         {
@@ -44,7 +50,22 @@ namespace _Game.Scripts.View
             {
                 _animator.SetLayerWeight(_injuredLayerIndex, WeightOnLayer);
             }
+            
+            
+            if (_character.InJumpProcess && _isJump == false)
+            {
+                Debug.Log("Jump");
+                _animator.SetTrigger(JumpKey);
+                _isJump = true;
+            }
 
+            if (_character.InJumpProcess == false)
+            {
+                _isJump = false;
+            }
+            
+            _animator.SetBool(JumpProcessKey, _character.InJumpProcess);
+            
             _animator.SetFloat(IsRunningKey, _character.CurrentVelocity.magnitude);
         }
 
