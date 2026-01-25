@@ -7,10 +7,13 @@ namespace _Game.Scripts.Entity
     [RequireComponent(typeof(SphereCollider))]
     public class Bomb : MonoBehaviour
     {
+        [Header("Settings")]
         [SerializeField] private float _radius;
         [SerializeField] private float _damage;
         [SerializeField] private float _time;
+        [Header("Particle")]
         [SerializeField] private ParticleSystem _boomParticleSystem;
+        [Header("Audio")]
         [SerializeField] private AudioSource _audioSource;
         [SerializeField] private AudioClip _audioClip;
         
