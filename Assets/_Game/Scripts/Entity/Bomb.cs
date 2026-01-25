@@ -5,14 +5,19 @@ using UnityEngine;
 namespace _Game.Scripts.Entity
 {
     [RequireComponent(typeof(SphereCollider))]
-    public class Mine : MonoBehaviour
+    public class Bomb : MonoBehaviour
     {
         [SerializeField] private float _radius;
         [SerializeField] private float _damage;
         [SerializeField] private float _time;
         [SerializeField] private ParticleSystem _boomParticleSystem;
+        [SerializeField] private AudioSource _audioSource;
+        [SerializeField] private AudioClip _audioClip;
+        
         private bool _isExplored;
         private Timer _timer;
+        
+        private AudioPlayer _audioPlayer;
         
         private AnimatorScale _animatorScale;
 
@@ -22,6 +27,8 @@ namespace _Game.Scripts.Entity
             GetComponent<SphereCollider>().radius = _radius;
 
             _animatorScale = new AnimatorScale(transform.localScale, transform);
+
+            _audioPlayer = new AudioPlayer(_audioSource);
         }
 
         private void Update()
@@ -55,6 +62,7 @@ namespace _Game.Scripts.Entity
             _isExplored =  true;
             
             _boomParticleSystem.Play();
+            _audioPlayer.Play(_audioClip);
         }
 
         private void OnTriggerEnter(Collider other)
