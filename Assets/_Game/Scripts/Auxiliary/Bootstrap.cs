@@ -47,7 +47,7 @@ namespace _Game.Scripts.Auxiliary
 
             _spawner.Initialize(new Spawner(_character.transform, _spawner),  playerInput);
             
-            var moveController = new DestinationController(playerInput, _character, _layerMask, _character);
+            var moveController = new DestinationController(playerInput, _character, _layerMask, _character, _character);
             var rotateController = new AlongMovableDestinationRotatableController(_character, _character);
             _controllerUpdater.Initialize(moveController, rotateController);
             

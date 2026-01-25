@@ -1,4 +1,3 @@
-using _Game.Scripts.CopyingFromCourse;
 using UnityEngine;
 
 namespace _Game.Scripts.Controllers
@@ -9,7 +8,8 @@ namespace _Game.Scripts.Controllers
 
         public void Initialize(Controller moveController, Controller rotateController)
         {
-            _characterController = new CompositeController(moveController, rotateController);
+            //_characterController = new CompositeController(moveController, rotateController);
+            _characterController = new CompositeController(moveController);
             
             _characterController.Enable();
         }
