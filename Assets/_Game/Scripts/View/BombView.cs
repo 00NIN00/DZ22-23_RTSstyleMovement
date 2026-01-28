@@ -1,8 +1,8 @@
 using _Game.Scripts.AudioSystem;
 using _Game.Scripts.Auxiliary;
 using _Game.Scripts.Entity;
-using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine;
 
 namespace _Game.Scripts.View
 {

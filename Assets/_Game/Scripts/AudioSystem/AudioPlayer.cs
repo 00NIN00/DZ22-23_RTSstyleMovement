@@ -17,16 +17,35 @@ namespace _Game.Scripts.AudioSystem
         
         public void Play(AudioClip audioClip, Transform transform, AudioMixerGroup mixerGroup)
         {
-            GameObject tempAudio = new GameObject("TempAudio");
-            tempAudio.transform.position = transform.position;
-    
+            GameObject tempAudio = CreateObject(transform);
+            
+            AudioSource audioSource = CreateAudioSource(tempAudio, mixerGroup);
+            audioSource.PlayOneShot(audioClip);
+            
+            DestroyByTime(tempAudio, audioClip.length);
+        }
+
+        private GameObject CreateObject(Transform transform)
+        {
+            GameObject gameObject = new GameObject("TempAudio");
+            gameObject.transform.position = transform.position;
+            
+            return gameObject;
+        }
+
+        private AudioSource CreateAudioSource(GameObject tempAudio, AudioMixerGroup mixerGroup)
+        {
             AudioSource audioSource = tempAudio.AddComponent<AudioSource>();
             audioSource.pitch = Random.Range(PitchMin, PitchMax);
             audioSource.outputAudioMixerGroup = mixerGroup;
-            audioSource.PlayOneShot(audioClip);
             
-            Destroyer destroyer = tempAudio.AddComponent<Destroyer>();
-            destroyer.Initialize(audioClip.length);
+            return audioSource;
+        }
+
+        private void DestroyByTime(GameObject gameObject, float time)
+        {
+            Destroyer destroyer = gameObject.AddComponent<Destroyer>();
+            destroyer.Initialize(time);
         }
     }
 }
