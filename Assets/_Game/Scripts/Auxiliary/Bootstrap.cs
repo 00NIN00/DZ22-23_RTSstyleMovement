@@ -1,9 +1,9 @@
+using _Game.Scripts.AudioSystem;
 using _Game.Scripts.Controllers;
 using _Game.Scripts.CopyingFromCourse;
 using _Game.Scripts.Entity;
 using _Game.Scripts.HealthSystem;
 using _Game.Scripts.MoveSystem;
-using _Game.Scripts.Sound;
 using _Game.Scripts.SpawnSystem;
 using _Game.Scripts.View;
 using UnityEngine.AI;
@@ -35,7 +35,7 @@ namespace _Game.Scripts.Auxiliary
         [SerializeField] private CharacterView _viewCharacter;
         
         [Header("Audio")]
-        [SerializeField] private AudioManager _audioManager;
+        [SerializeField] private AudioHandlerView audioHandlerView;
         [SerializeField] private AudioMixer _audioMixer;
         private AudioHandler _audioHandler;
 
@@ -56,7 +56,7 @@ namespace _Game.Scripts.Auxiliary
             _viewCharacter.Initialize(_character, playerHealth);
 
             _audioHandler = new AudioHandler(_audioMixer);
-            _audioManager.Initialize(_audioHandler);
+            audioHandlerView.Initialize(_audioHandler);
         }
     }
 }

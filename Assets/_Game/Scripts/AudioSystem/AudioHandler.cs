@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Audio;
 
-namespace _Game.Scripts.Sound
+namespace _Game.Scripts.AudioSystem
 {
     public class AudioHandler
     {

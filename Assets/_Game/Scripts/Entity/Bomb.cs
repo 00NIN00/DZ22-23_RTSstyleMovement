@@ -1,5 +1,5 @@
-using _Game.Scripts.Auxiliary;
 using _Game.Scripts.HealthSystem;
+using _Game.Scripts.Auxiliary;
 using UnityEngine;
 
 namespace _Game.Scripts.Entity
@@ -11,27 +11,17 @@ namespace _Game.Scripts.Entity
         [SerializeField] private float _radius;
         [SerializeField] private float _damage;
         [SerializeField] private float _time;
-        [Header("Particle")]
-        [SerializeField] private ParticleSystem _boomParticleSystem;
-        [Header("Audio")]
-        [SerializeField] private AudioSource _audioSource;
-        [SerializeField] private AudioClip _audioClip;
         
         private bool _isExplored;
         private Timer _timer;
         
-        private AudioPlayer _audioPlayer;
-        
-        private AnimatorScale _animatorScale;
+        public bool IsExplored => _isExplored;
+        public bool IsProcess => _timer.IsProcess;
 
         private void Awake()
         {
             _timer = new Timer(this);
             GetComponent<SphereCollider>().radius = _radius;
-
-            _animatorScale = new AnimatorScale(transform.localScale, transform);
-
-            _audioPlayer = new AudioPlayer(_audioSource);
         }
 
         private void Update()
@@ -40,14 +30,6 @@ namespace _Game.Scripts.Entity
             {
                 Explosion();
             }
-
-            if (_timer.IsProcess)
-            {
-                _animatorScale.Update(Time.time);
-            }
-            
-            if (!_boomParticleSystem.isPlaying && _isExplored)
-                gameObject.SetActive(false);
         }
 
         private void Explosion()
@@ -63,9 +45,7 @@ namespace _Game.Scripts.Entity
             }
             
             _isExplored =  true;
-            
-            _boomParticleSystem.Play();
-            _audioPlayer.Play(_audioClip);
+            //gameObject.SetActive(false);
         }
 
         private void OnTriggerEnter(Collider other)

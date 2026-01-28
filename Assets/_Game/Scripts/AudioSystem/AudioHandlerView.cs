@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace _Game.Scripts.Sound
+namespace _Game.Scripts.AudioSystem
 {
-    public class AudioManager : MonoBehaviour
+    public class AudioHandlerView : MonoBehaviour
     {
         [SerializeField] private Button _changeSoundButton; 
         [SerializeField] private Button _changeMusicButton; 
