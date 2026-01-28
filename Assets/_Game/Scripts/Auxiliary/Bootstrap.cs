@@ -53,7 +53,7 @@ namespace _Game.Scripts.Auxiliary
             _controllerUpdater.AddEntity(moveController);
             
             _viewTargetPointCharacter.Initialize(_character, _flag);
-            _viewCharacter.Initialize(_character, playerHealth);
+            _viewCharacter.Initialize(_character);
 
             _audioHandler = new AudioHandler(_audioMixer);
             audioHandlerView.Initialize(_audioHandler);

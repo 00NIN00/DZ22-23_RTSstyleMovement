@@ -1,9 +1,8 @@
-using _Game.Scripts.View;
 using UnityEngine;
 
 namespace _Game.Scripts.HealthSystem
 {
-    public class Health : IHealthForView
+    public class Health
     {
         private readonly float _maxValue;
         private float _value;

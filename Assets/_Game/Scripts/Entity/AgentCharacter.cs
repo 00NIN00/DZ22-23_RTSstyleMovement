@@ -20,6 +20,12 @@ namespace _Game.Scripts.Entity
         private float _rotateSpeed;
         private float _jumpSpeed;
 
+        private Health _health;
+        
+        public float Health => _health.Value;
+        public float MaxHealth => _health.MaxValue;
+        public bool IsAlive => _health.IsAlive;
+        
         public Vector3 CurrentVelocity => _mover.CurrentVelocity;
         public Quaternion CurrentRotation => _rotator.CurrentRotation;
 
@@ -27,8 +33,6 @@ namespace _Game.Scripts.Entity
 
         public bool IsFinishing =>
             !_agent.pathPending && !_agent.hasPath && _agent.remainingDistance <= _agent.stoppingDistance;
-
-        private Health _health;
 
         public bool InJumpProcess => _jumper.InProcess;
         
@@ -86,12 +90,10 @@ namespace _Game.Scripts.Entity
         }
 
         public void Heal(float heal) => _health.Add(heal);
-    }
 
-    public interface IDestinationJumped
-    {
-        public bool InJumpProcess { get; }
-        public bool IsOnMavMeshLink(out OffMeshLinkData offMeshLinkData);
-        public void Jump(OffMeshLinkData offMeshLinkData);
+        public bool TakeDamageEvent()
+        {
+            return _health.TakeDamageEvent();
+        }
     }
 }

@@ -1,4 +1,5 @@
 using _Game.Scripts.Entity;
+using _Game.Scripts.HealthSystem;
 using UnityEngine;
 
 namespace _Game.Scripts.View
@@ -18,7 +19,7 @@ namespace _Game.Scripts.View
         private int _injuredLayerIndex;
 
 
-        private IHealthForView _healthForView;
+        //private Health _healthForView;
         private AgentCharacter _character;
 
         private bool _isJump = false;
@@ -26,24 +27,23 @@ namespace _Game.Scripts.View
         [SerializeField] private Animator _animator;
         
 
-        public void Initialize(AgentCharacter character, IHealthForView healthForView)
+        public void Initialize(AgentCharacter character)
         {
             _character = character;
-            _healthForView = healthForView;
             
             _injuredLayerIndex = _animator.GetLayerIndex(InjuredLayer);
         }
 
         private void Update()
         {
-            if (_healthForView.IsAlive == false)
+            if (_character.IsAlive == false)
             {
                 _animator.SetBool(IsDeath, true);
 
                 return;
             }
 
-            if (_healthForView.TakeDamageEvent())
+            if (_character.TakeDamageEvent())
                 _animator.SetTrigger(TakeDamage);
 
             if (IsWounded(PercentWounded))
@@ -69,6 +69,6 @@ namespace _Game.Scripts.View
             _animator.SetFloat(IsRunningKey, _character.CurrentVelocity.magnitude);
         }
 
-        private bool IsWounded(float percent) => _healthForView.Value <= _healthForView.MaxValue * percent;
+        private bool IsWounded(float percent) => _character.Health <= _character.MaxHealth * percent;
     }
 }
