@@ -16538,7 +16538,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: c54b026e0200cfb42bef7fa972cc7ad7, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.05
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -16832,7 +16832,7 @@ MonoBehaviour:
   _controllerUpdater: {fileID: 2130240142}
   _navMeshAgent: {fileID: 2136186801}
   _viewCharacter: {fileID: 392251827}
-  _audioManager: {fileID: 1312431673}
+  audioHandlerView: {fileID: 1312431673}
   _audioMixer: {fileID: 24100000, guid: 5253883c5a4da7d49b140a4c112254bf, type: 2}
 --- !u!4 &1081578690
 Transform:
