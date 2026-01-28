@@ -1,22 +1,26 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace _Game.Scripts.Controllers
 {
     public class ControllerUpdater : MonoBehaviour
     {
-        private Controller _characterController;
+        private List<Controller> _controllers = new();
 
-        public void Initialize(Controller moveController, Controller rotateController)
+        public void AddEntity(params Controller[] controllers)
         {
-            //_characterController = new CompositeController(moveController, rotateController);
-            _characterController = new CompositeController(moveController);
+            CompositeController compositeController = new(controllers);
             
-            _characterController.Enable();
+            compositeController.Enable();
+            _controllers.Add(compositeController);
         }
         
         private void Update()
         {
-            _characterController.Update(Time.deltaTime);
+            foreach (Controller controller in _controllers)
+            {
+                controller.Update(Time.deltaTime);
+            }
         }
     }
 }

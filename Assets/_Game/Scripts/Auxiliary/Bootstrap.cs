@@ -50,7 +50,7 @@ namespace _Game.Scripts.Auxiliary
             
             var moveController = new DestinationController(playerInput, _character, _layerMask, _character, _character);
             var rotateController = new AlongMovableDestinationRotatableController(_character, _character);
-            _controllerUpdater.Initialize(moveController, rotateController);
+            _controllerUpdater.AddEntity(moveController);
             
             _viewTargetPointCharacter.Initialize(_character, _flag);
             _viewCharacter.Initialize(_character, playerHealth);
