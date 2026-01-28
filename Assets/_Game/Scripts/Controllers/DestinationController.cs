@@ -30,7 +30,7 @@ namespace _Game.Scripts.Controllers
         
         protected override void UpdateLogic(float deltaTime)
         {
-            if (UiInputChecker.IsPointerOverUI())
+            if (_input.IsPointerOverUI())
             {
                 return;
             }

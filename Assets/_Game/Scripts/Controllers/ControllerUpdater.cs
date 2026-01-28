@@ -5,7 +5,7 @@ namespace _Game.Scripts.Controllers
 {
     public class ControllerUpdater : MonoBehaviour
     {
-        private List<Controller> _controllers = new();
+        private readonly List<Controller> _controllers = new();
 
         public void AddEntity(params Controller[] controllers)
         {

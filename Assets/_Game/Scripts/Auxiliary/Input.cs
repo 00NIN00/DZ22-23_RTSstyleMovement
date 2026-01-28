@@ -1,4 +1,4 @@
-using _Game.Scripts.SpawnSystem;
+using UnityEngine.EventSystems;
 using UnityEngine;
 
 namespace _Game.Scripts.Auxiliary
@@ -10,5 +10,13 @@ namespace _Game.Scripts.Auxiliary
 
         public bool Button => UnityEngine.Input.GetMouseButton(0);
         public bool SwitcherSpawner => UnityEngine.Input.GetKeyDown(SwitchSpawnKeyCode);
+
+        public bool IsPointerOverUI()
+        {
+            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+                return true;
+            
+            return false;
+        }
     }
 }
