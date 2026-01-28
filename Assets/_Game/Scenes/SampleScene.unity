@@ -16789,7 +16789,7 @@ MonoBehaviour:
   _flag: {fileID: 1372133639}
   _spawner: {fileID: 1104215026}
   _character: {fileID: 2136186809}
-  _maxHealth: 2
+  _maxHealth: 10
   _speedMove: 11
   _speedRotate: 999
   _jumpSpeed: 5
